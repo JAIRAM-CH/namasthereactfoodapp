@@ -1,0 +1,59 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+.Header .logo {
+  width: 120px;
+}
+.Header .nav-items > ul {
+  display: flex;
+  list-style-type: none;
+}
+.Header .nav-items > ul > li {
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: large;
+  cursor: pointer;
+}
+.rescontainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rescard {
+  width: 12rem;
+  border-radius: 3%;
+  padding: 0.3rem;
+  background-color: #f0f0f0;
+  margin: 2rem;
+}
+.rescard:hover {
+  cursor: pointer;
+  border: 1px solid green;
+}
+.cardimg {
+  width: 100%;
+}
+.cardAttr {
+  font-weight: 500;
+}
+
+.shimmer-card {
+  margin: 10px;
+  height: 300px;
+  width: 200px;
+  background-color: #f0f0f0;
+}
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.login-btn {
+  font-size: small;
+}
+.filter {
+  display: flex;
+  justify-content: space-between;
+}
