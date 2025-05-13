@@ -2,6 +2,9 @@ import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
 import reslist from "../utils/Mockdata";
 import { useEffect, useState } from "react";
+import { AxiosInst } from "./axios/api";
+import { Link } from "react-router-dom";
+import { RES_URL } from "../utils/constants";
 const Body = () => {
   const [Listofrestaurants, setListofrestaurants] = useState([]);
   const [filteredListofrestaurants, setfilteredListofrestaurants] = useState(
@@ -15,6 +18,8 @@ const Body = () => {
     setfilteredListofrestaurants(filteredreslist);
   };
 
+  //React will run this cleanup function (return) before re-running an effect,
+  //  and when unmounting the component.
   useEffect(() => {
     getData()
       .then((res) => {
@@ -25,22 +30,32 @@ const Body = () => {
         setListofrestaurants([]);
         console.log(error);
       });
+
+    const s = setInterval(() => {
+      getData()
+        .then((res) => {
+          setListofrestaurants(res);
+          setfilteredListofrestaurants(res);
+        })
+        .catch((error) => {
+          setListofrestaurants([]);
+          console.log(error);
+        });
+    }, 30000);
+    return () => {
+      clearInterval(s);
+    };
   }, []);
 
   const getData = async () => {
-    const data = await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(reslist);
-      }, 2000);
-    });
-    return data;
+    const response = await AxiosInst.get(RES_URL);
+    return response.data?.data?.cards[1]?.card?.card?.gridElements
+      ?.infoWithStyle?.restaurants;
   };
 
   const handleSearchBtn = () => {
     const filteredListofrestaurants = Listofrestaurants.filter((res) => {
-      if (
-        res.card.card.info.name.toLowerCase().includes(searchText.toLowerCase())
-      )
+      if (res.info.name.toLowerCase().includes(searchText.toLowerCase()))
         return res;
     });
     setfilteredListofrestaurants(filteredListofrestaurants);
@@ -67,10 +82,14 @@ const Body = () => {
       </div>
       <div className="rescontainer">
         {filteredListofrestaurants.map((restaurantobj) => (
-          <RestaurantCard
-            key={restaurantobj.card.card.info.id}
-            resData={restaurantobj}
-          />
+          <>
+            <Link
+              to={`restaurant/${restaurantobj.info.id}/${restaurantobj.info.name}`}
+              key={restaurantobj.info.id}
+            >
+              <RestaurantCard resData={restaurantobj.info} />
+            </Link>
+          </>
         ))}
       </div>
     </div>

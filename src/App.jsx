@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import { Suspense } from "react";
+import AuthenticationProvider from "./components/Authentication/AuthenticationProvider";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
@@ -8,15 +9,11 @@ import "./App.css";
 function App() {
   const Body = lazy(() => import("./components/Layout/Body"));
   const Home = lazy(() => import("./components/Home"));
-  const Cart = lazy(() => {
-    import("./components/Cart");
-  });
+  const Cart = lazy(() => import("./components/Cart"));
   const About = lazy(() => import("./components/About"));
   const Contactus = lazy(() => import("./components/Contactus"));
+  const Restaurant = lazy(() => import("./components/Restaurant"));
   const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
-  const AuthenticationProvider = lazy(() =>
-    import("./components/Authentication/AuthenticationProvider")
-  );
   const AuthCallBack = lazy(() =>
     import("./components/Authentication/AuthCallBack")
   );
@@ -28,7 +25,7 @@ function App() {
             path="/"
             element={
               <Suspense fallback={<h1>Loading....</h1>}>
-                <Body Component={<Home />} />
+                <Body component={Home} />
               </Suspense>
             }
           />
@@ -36,7 +33,7 @@ function App() {
             path="/about"
             element={
               <Suspense fallback={<h1>Loading....</h1>}>
-                <Body Component={<About />} />
+                <Body component={About} />
               </Suspense>
             }
           />
@@ -44,7 +41,7 @@ function App() {
             path="contactus"
             element={
               <Suspense fallback={<h1>Loading....</h1>}>
-                <Body Component={<Contactus />} />
+                <Body component={Contactus} />
               </Suspense>
             }
           />
@@ -52,7 +49,7 @@ function App() {
             path="/cart"
             element={
               <Suspense fallback={<h1>Loading....</h1>}>
-                <Body Component={<Cart />} />
+                <Body component={Cart} />
               </Suspense>
             }
           />
@@ -60,9 +57,15 @@ function App() {
             path="/callback"
             element={
               <Suspense fallback={<h1>Loading....</h1>}>
-                <Body>
-                  <AuthCallBack />
-                </Body>
+                <Body component={AuthCallBack} />
+              </Suspense>
+            }
+          />
+          <Route
+            path="restaurant/:resId/:resName"
+            element={
+              <Suspense fallback={<h1>Loading....</h1>}>
+                <Body component={Restaurant} />
               </Suspense>
             }
           />

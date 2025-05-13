@@ -1,12 +1,9 @@
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 const TopMenu = () => {
-  const [isloginClicked, setIsloginClicked] = useState(false);
-  const handleloginclick = () => {
-    setIsloginClicked(!isloginClicked);
-  };
-
+  const { isAuthenticated, logout } = useAuth0();
   return (
     <div className="Header">
       <div className="logo-container">
@@ -25,16 +22,20 @@ const TopMenu = () => {
           </li>
           <li>
             <Link to="/cart">
-              <i class="bi bi-cart3"></i>
+              <i className="bi bi-cart3"></i>
             </Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
 
-          <button className="login-btn" onClick={handleloginclick}>
-            {isloginClicked ? "Logout" : "Login"}
-          </button>
+          {isAuthenticated && (
+            <button
+              className="login-btn"
+              onClick={() =>
+                logout({ logoutParams: { returnTo: window.location.origin } })
+              }
+            >
+              Logout
+            </button>
+          )}
         </ul>
       </div>
     </div>

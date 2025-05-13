@@ -6,6 +6,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary-screen-color: ;
+  --secondary-screen-color: ;
+  --card-bg-color: #fff;
+  --card-hover-color: #008000;
+  --nav-item-bg-color: #000;
+  --nav-item-text-color: #fff;
 }
 
 #heading {
