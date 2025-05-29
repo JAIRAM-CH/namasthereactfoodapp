@@ -13,7 +13,7 @@ function App() {
   const About = lazy(() => import("./components/About"));
   const Contactus = lazy(() => import("./components/Contactus"));
   const Restaurant = lazy(() => import("./components/Restaurant"));
-  const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
+  const NotFoundPage = lazy(() => import("./components/common/NotFoundPage"));
   const AuthCallBack = lazy(() =>
     import("./components/Authentication/AuthCallBack")
   );

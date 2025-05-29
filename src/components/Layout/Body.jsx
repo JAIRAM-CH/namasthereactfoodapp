@@ -1,4 +1,3 @@
-import React from "react";
 import Layout from "./Layout";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { useLocation } from "react-router-dom";

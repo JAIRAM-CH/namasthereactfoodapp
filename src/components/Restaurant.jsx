@@ -2,22 +2,10 @@ import React, { useEffect, useState } from "react";
 import { AxiosInst } from "./axios/api";
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuCard";
-import { MENU_URL } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 function Restaurant() {
   const { resId, resName } = useParams();
-  const [Menu, setMenu] = useState([]);
-
-  const getMenu = async () => {
-    const response = await AxiosInst.get(MENU_URL + resId);
-    const data =
-      response?.data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
-        ?.cards[2]?.card?.card?.itemCards;
-    setMenu(data);
-  };
-
-  useEffect(() => {
-    getMenu();
-  }, [resId]);
+  const Menu = useRestaurantMenu(resId);
 
   return (
     <>

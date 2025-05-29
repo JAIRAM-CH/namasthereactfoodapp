@@ -14,17 +14,25 @@
   display: flex;
   list-style-type: none;
 }
+.Header .nav-items > ul > li:not(.login-btn):hover {
+  background-color: var(--nav-item-bg-color);
+  border-radius: 0.5rem;
+}
 .Header .nav-items > ul > li > a {
   text-decoration: none;
-  background-color: var(--nav-item-bg-color);
-  padding: 0.5rem 1rem;
   color: var(--nav-item-text-color);
 }
+
 .Header .nav-items > ul > li {
-  margin: 1rem;
+  margin: 1.2rem;
   padding: 0.5rem;
   font-size: large;
   cursor: pointer;
+}
+.login-btn {
+  background-color: var(--nav-button-color);
+  color: white;
+  border-radius: 0.5rem;
 }
 .rescontainer {
   display: flex;

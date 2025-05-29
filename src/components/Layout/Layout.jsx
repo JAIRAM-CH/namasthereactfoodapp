@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TopMenu from "./TopMenu";
 import { useAuth0 } from "@auth0/auth0-react";
-
 const Layout = ({ children }) => {
   const {
     isLoading,

@@ -1,7 +1,6 @@
 import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
-import reslist from "../utils/Mockdata";
-import { useEffect, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { AxiosInst } from "./axios/api";
 import { Link } from "react-router-dom";
 import { RES_URL } from "../utils/constants";

@@ -1,9 +1,10 @@
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 const TopMenu = () => {
   const { isAuthenticated, logout } = useAuth0();
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="Header">
       <div className="logo-container">
@@ -11,6 +12,7 @@ const TopMenu = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>OnlineStatus : {onlineStatus ? "✔" : "❌"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -27,14 +29,14 @@ const TopMenu = () => {
           </li>
 
           {isAuthenticated && (
-            <button
+            <li
               className="login-btn"
               onClick={() =>
                 logout({ logoutParams: { returnTo: window.location.origin } })
               }
             >
               Logout
-            </button>
+            </li>
           )}
         </ul>
       </div>
