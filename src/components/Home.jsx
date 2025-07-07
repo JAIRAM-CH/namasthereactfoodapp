@@ -63,23 +63,32 @@ const Body = () => {
   return Listofrestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="Body">
-      <div className="filter">
-        <div className="search">
+    <div className="">
+      <div className="flex my-4 justify-baseline">
+        <div className="">
           <input
             type="text"
-            className="search-box"
+            className=" border border-black rounded-sm "
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button onClick={handleSearchBtn}>Search</button>
+          <button
+            className=" px-3 py-1 m-2 bg-green-100 rounded-lg "
+            onClick={handleSearchBtn}
+          >
+            Search
+          </button>
         </div>
-
-        <button className="filter-btn" onClick={handleTopSearchRes}>
-          Top Searched Restaurants
-        </button>
+        <div>
+          <button
+            className="px-3 py-1 m-2 bg-amber-200 rounded-lg "
+            onClick={handleTopSearchRes}
+          >
+            Top Searched Restaurants
+          </button>
+        </div>
       </div>
-      <div className="rescontainer">
+      <div className="flex flex-wrap gap-3">
         {filteredListofrestaurants.map((restaurantobj) => (
           <>
             <Link

@@ -6,23 +6,23 @@ const TopMenu = () => {
   const { isAuthenticated, logout } = useAuth0();
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="Header">
+    <div className="flex justify-between shadow-lg">
       <div className="logo-container">
-        <img className="logo" src={Logo} alt="Logo" />
+        <img className="w-28" src={Logo} alt="Logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>OnlineStatus : {onlineStatus ? "✔" : "❌"}</li>
-          <li>
+      <div className="flex items-center ">
+        <ul className="flex mr-4 list-none">
+          <li className="px-2">OnlineStatus : {onlineStatus ? "✔" : "❌"}</li>
+          <li className="px-2">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-2 ">
             <Link to="/contactus">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/cart">
               <i className="bi bi-cart3"></i>
             </Link>
@@ -30,7 +30,7 @@ const TopMenu = () => {
 
           {isAuthenticated && (
             <li
-              className="login-btn"
+              className="login-btn px-2"
               onClick={() =>
                 logout({ logoutParams: { returnTo: window.location.origin } })
               }

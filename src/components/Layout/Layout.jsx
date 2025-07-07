@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
 
   return (
     !isLoading && (
-      <div className="layout">
+      <div className=" box-border ">
         <TopMenu />
         {children}
       </div>

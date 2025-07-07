@@ -9,30 +9,16 @@ function Restaurant() {
 
   return (
     <>
-      <div
-        style={{
-          marginBottom: "2rem",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <h2
-          style={{
-            width: "16rem",
-          }}
-        >
-          {resName}
-        </h2>
-      </div>
+      <h2 className=" text-center m-4 ">{resName}</h2>
 
-      {Menu &&
-        Menu.map((item) => (
-          <>
-            <div className="menuContainer">
+      <div className="flex flex-wrap gap-2 border justify-center">
+        {Menu &&
+          Menu.map((item) => (
+            <>
               <MenuCard key={item?.card?.info?.id} Menu={item?.card?.info} />
-            </div>
-          </>
-        ))}
+            </>
+          ))}
+      </div>
     </>
   );
 }

@@ -24,7 +24,7 @@ const Body = ({ component }) => {
 
   return (
     <Layout>
-      <main className="main-content">
+      <main className="">
         <Component />
       </main>
     </Layout>
